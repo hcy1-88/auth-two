@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: my-client
+  mvc:
+    static-path-pattern: /static/**
+  thymeleaf:
+    cache: false
+server:
+  port: 8001

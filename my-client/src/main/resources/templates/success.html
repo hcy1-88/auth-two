@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{../static/js/axios.min.js}"></script>
+    <script th:src="@{../static/js/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{../static/js/cookieHandle.js}"></script>
+    <script>
+        $(function (){
+            let accessToken = getCookie("accessToken");
+            console.log("accessToken:" + accessToken);
+            axios({
+                method: 'post',
+                url: "http://localhost:8002/user/getCurrentUser",
+                headers: {
+                    "Authorization": "Bearer "+accessToken
+                }
+            }).then(res => {
+                console.log(res.data);
+                $("#currName").text(res.data.username);
+            })
+        })
+    </script>
+</head>
+<body>
+哎哟我的乖乖，<span id="currName"></span>， 你终于成功了！
+</body>
+</html>
